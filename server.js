@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser'
 
 import { loggerService } from './services/logger.service.js'
 import { toyService } from './services/toy.service.js'
-import Cryptr from 'cryptr'
+import dotenv from 'dotenv'
 
 const app = express()
 
@@ -14,9 +14,11 @@ const app = express()
 app.use(cookieParser()) // for res.cookies
 app.use(express.json()) // for req.body
 
-
-const secret = process.env.MY_SECRET
+dotenv.config()
+const secret = process.env.NODE_ENV === 'production'? process.env.MY_SECRET:process.env.MY_SECRET
 console.log('secret',secret)
+
+
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('public'))
