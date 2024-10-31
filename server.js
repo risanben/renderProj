@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 
 import { loggerService } from './services/logger.service.js'
 import { toyService } from './services/toy.service.js'
+import Cryptr from 'cryptr'
 
 const app = express()
 
@@ -13,7 +14,8 @@ const app = express()
 app.use(cookieParser()) // for res.cookies
 app.use(express.json()) // for req.body
 
-const secret = import.meta.env.MY_SECRET
+
+const secret = process.env.MY_SECRET
 console.log('secret',secret)
 
 if (process.env.NODE_ENV === 'production') {
