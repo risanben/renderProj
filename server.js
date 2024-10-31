@@ -13,7 +13,7 @@ const app = express()
 app.use(cookieParser()) // for res.cookies
 app.use(express.json()) // for req.body
 
-const secret = import.meta.env.VITE_MY_SECRET
+const secret = import.meta.env.MY_SECRET
 console.log('secret',secret)
 
 if (process.env.NODE_ENV === 'production') {
